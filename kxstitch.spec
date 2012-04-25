@@ -36,10 +36,8 @@ popd
 %find_lang %{name}
 
 %files -f %{name}.lang
-%defattr(0755,root,root,0755)
-%{_bindir}/%{name}
+%attr(0755,root,root) %{_bindir}/%{name}
 %defattr(0644,root,root,0755)
-%doc AUTHORS
 %{_datadir}/icons/*/*/apps/*.png
 %{_datadir}/apps/%{name}
 %{_datadir}/doc/HTML/en/*
