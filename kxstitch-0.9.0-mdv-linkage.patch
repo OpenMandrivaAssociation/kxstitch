@@ -1,0 +1,14 @@
+Index: kxstitch-0.9.0-KDE4/CMakeLists.txt
+===================================================================
+--- kxstitch-0.9.0-KDE4.orig/CMakeLists.txt
++++ kxstitch-0.9.0-KDE4/CMakeLists.txt
+@@ -114,7 +114,8 @@ kde4_add_executable (kxstitch ${kxstitch
+ 
+ target_link_libraries (kxstitch ${KDE4_KDEUI_LIBS}
+ 				${KDE4_KIO_LIBS}
+-				${ImageMagick_Magick++_LIBRARY} ${ImageMagick_MagickCore_LIBRARY})
++				${ImageMagick_Magick++_LIBRARY} ${ImageMagick_MagickCore_LIBRARY}
++				X11)
+ 
+ set (CMAKE_CXX_FLAGS "-DQT_NO_COMPAT -DKDE_NO_COMPAT")
+ 
