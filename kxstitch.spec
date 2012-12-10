@@ -45,3 +45,41 @@ popd
 %{_kde_applicationsdir}/kxstitch.desktop
 %{_datadir}/config.kcfg/kxstitch.kcfg
 %{_datadir}/mime/packages/kxstitch.xml
+
+
+%changelog
+* Wed Apr 25 2012 Dmitry Mikhirev <dmikhirev@mandriva.org> 0.9.0-1
++ Revision: 793374
+- imported package kxstitch
+
+
+
+* Thu Aug 31 2006 Couriousous <couriousous@mandriva.org> 0.8-1mdv2007.0
+- 0.8
+
+* Thu Aug 17 2006 Nicolas Lécureuil <neoclust@mandriva.org> 0.7-7mdv2007.0
+- Rebuild against new dbus
+
+* Thu Jul 06 2006 Nicolas Lécureuil <neoclust@mandriva.org> 0.7-6mdv2007.0
+- Rebuild for new menu && extension
+
+* Fri Mar 17 2006 Couriousous <couriousous@mandriva.org> 0.7-5mdk
+- Rebuild
+
+* Sat Jan 14 2006 Couriousous <couriousous@mandriva.org> 0.7-4mdk
+- Rebuild
+
+* Wed Aug 24 2005 Oden Eriksson <oeriksson@mandriva.com> 0.7-3mdk
+- rebuilt against new Magick libs
+
+* Sun Jul 31 2005 Nicolas Lécureuil <neoclust@mandriva.org> 0.7-2mdk
+- Fix BuildRequires
+
+* Fri Jul 15 2005 Couriousous <couriousous@mandriva.org> 0.7-1mdk
+- 0.7
+
+* Fri Mar 25 2005 Couriousous <couriousous@mandrake.org> 0.6-2mdk
+- Rebuild
+
+* Sun Jan 2 2005 Couriousous <couriousous@mandrake.org> 0.6-1mdk
+- First Mandrakelinux package
