@@ -1,6 +1,6 @@
 Name:		kxstitch
 Version:	0.9.0
-Release:	1
+Release:	2
 Summary:	Creation and editing of cross stitch patterns
 Source0:	http://downloads.sourceforge.net/project/kxstitch/%{name}/%{version}/%{name}-%{version}-KDE4.tar.gz
 Patch0:		kxstitch-0.9.0-mdv-linkage.patch
