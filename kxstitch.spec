@@ -1,85 +1,73 @@
 Name:		kxstitch
-Version:	0.9.0
-Release:	2
-Summary:	Creation and editing of cross stitch patterns
-Source0:	http://downloads.sourceforge.net/project/kxstitch/%{name}/%{version}/%{name}-%{version}-KDE4.tar.gz
-Patch0:		kxstitch-0.9.0-mdv-linkage.patch
+Summary:	Program to create cross stitch patterns
+Version:	2.1.1
+Release:	1
 License:	GPLv2+
-Group:		Graphics
-URL:		http://kxstitch.sourceforge.net/
-BuildRequires:	cmake
-BuildRequires:	kdelibs4-devel
-BuildRequires:	imagemagick-devel
+Group:		Graphical desktop/KDE
+URL:		https://www.kde.org/applications/graphics/kxstitch/
+Source0:	https://download.kde.org/stable/kxstitch/%{version}/%{name}-%{version}.tar.xz
+BuildRequires:	doxygen
+BuildRequires:	cmake(ECM)
+BuildRequires:	cmake(KF5DocTools)
+BuildRequires:	cmake(KF5Config)
+BuildRequires:	cmake(KF5ConfigWidgets)
+BuildRequires:	cmake(KF5Completion)
+BuildRequires:	cmake(KF5I18n)
+BuildRequires:	cmake(KF5KIO)
+BuildRequires:	cmake(KF5TextWidgets)
+BuildRequires:	cmake(KF5WidgetsAddons)
+BuildRequires:	cmake(KF5XmlGui)
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Gui)
+BuildRequires:	pkgconfig(Qt5Network)
+BuildRequires:	pkgconfig(Qt5PrintSupport)
+BuildRequires:	pkgconfig(Qt5Widgets)
+BuildRequires:	pkgconfig(Qt5X11Extras)
+BuildRequires:	pkgconfig(MagickCore)
+BuildRequires:	pkgconfig(shared-mime-info)
+BuildRequires:	pkgconfig(x11)
+Recommends:	%{name}-handbook
 
 %description
-Kxstitch is a program that lets you create cross stitch patterns and charts.
-Patterns can be created from scratch on a user defined size of grid, which can
-be enlarged or reduced in size as your pattern progresses.  Alternatively you
-can import images from many graphics formats or use an image as a background. 
-You can also scan images using any Sane supported scanner.
-These imported images can then be modified using the supplied tools to produce
-your final design.
-
-%prep
-%setup -q -n %{name}-%{version}-KDE4
-%patch0 -p1
-
-%build
-%cmake
-%make
-
-%install
-pushd build
-%makeinstall_std
-popd
-
-%find_lang %{name}
+KXStitch is a program that lets you create cross stitch patterns and charts.
 
 %files -f %{name}.lang
-%attr(0755,root,root) %{_bindir}/%{name}
-%defattr(0644,root,root,0755)
-%{_datadir}/icons/*/*/apps/*.png
-%{_datadir}/apps/%{name}
-%{_datadir}/doc/HTML/en/*
-%{_mandir}/man?/%{name}.?*
-%{_kde_applicationsdir}/kxstitch.desktop
-%{_datadir}/config.kcfg/kxstitch.kcfg
-%{_datadir}/mime/packages/kxstitch.xml
+%{_kde5_bindir}/%{name}
+%{_kde5_applicationsdir}/org.kde.%{name}.desktop
+%{_kde5_datadir}/metainfo/org.kde.%{name}.appdata.xml
+%{_kde5_datadir}/%{name}/
+%{_kde5_iconsdir}/*/*/apps/%{name}.png
+%{_kde5_iconsdir}/*/*/actions/%{name}*.png
+%{_kde5_iconsdir}/hicolor/scalable/apps/%{name}.svgz
+%{_kde5_mandir}/man?/%{name}.*
+%{_kde5_datadir}/kxmlgui5/%{name}/
+%{_kde5_datadir}/config.kcfg/%{name}.kcfg
 
+#------------------------------------------------------------------------------
 
-%changelog
-* Wed Apr 25 2012 Dmitry Mikhirev <dmikhirev@mandriva.org> 0.9.0-1
-+ Revision: 793374
-- imported package kxstitch
+%package handbook
+Summary:	KXStitch handbook
+Group:		Documentation
+BuildArch:	noarch
+Requires:	%{name} >= %{version}-%{release}
 
+%description handbook
+This package provides the KXStitch handbook.
 
+%files handbook
+%doc %{_kde5_docdir}/HTML/*/%{name}/
 
-* Thu Aug 31 2006 Couriousous <couriousous@mandriva.org> 0.8-1mdv2007.0
-- 0.8
+#------------------------------------------------------------------------------
 
-* Thu Aug 17 2006 Nicolas Lécureuil <neoclust@mandriva.org> 0.7-7mdv2007.0
-- Rebuild against new dbus
+%prep
+%setup -q
 
-* Thu Jul 06 2006 Nicolas Lécureuil <neoclust@mandriva.org> 0.7-6mdv2007.0
-- Rebuild for new menu && extension
+%build
+%cmake_kde5
+%ninja
 
-* Fri Mar 17 2006 Couriousous <couriousous@mandriva.org> 0.7-5mdk
-- Rebuild
+%install
+%ninja_install -C build
 
-* Sat Jan 14 2006 Couriousous <couriousous@mandriva.org> 0.7-4mdk
-- Rebuild
+%find_lang %{name} --with-man
 
-* Wed Aug 24 2005 Oden Eriksson <oeriksson@mandriva.com> 0.7-3mdk
-- rebuilt against new Magick libs
-
-* Sun Jul 31 2005 Nicolas Lécureuil <neoclust@mandriva.org> 0.7-2mdk
-- Fix BuildRequires
-
-* Fri Jul 15 2005 Couriousous <couriousous@mandriva.org> 0.7-1mdk
-- 0.7
-
-* Fri Mar 25 2005 Couriousous <couriousous@mandrake.org> 0.6-2mdk
-- Rebuild
-
-* Sun Jan 2 2005 Couriousous <couriousous@mandrake.org> 0.6-1mdk
-- First Mandrakelinux package
