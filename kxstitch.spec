@@ -1,6 +1,6 @@
 Name:		kxstitch
 Summary:	Program to create cross stitch patterns
-Version:	2.1.1
+Version:	2.2.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
